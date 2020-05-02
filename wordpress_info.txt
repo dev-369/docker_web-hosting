@@ -1,0 +1,1 @@
+sudo docker run -dit -e WORDPRESS_DB_HOST=devdbos -e WORDPRESS_DB_USER=quantadev -e WORDPRESS_DB_PASSWORD=quanta -e WORDPRESS_DB_NAME=my_sqldb -v wp_storage:/var/www/html --name devwpos -p 8080:80 --link devdbos wordpress:latest

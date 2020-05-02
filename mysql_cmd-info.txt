@@ -1,0 +1,1 @@
+sudo docker run -dit -e MYSQL_ROOT_PASSWORD=mysqlroot -e MYSQL_USER=quantadev -e MYSQL_PASSWORD=quanta -e MYSQL_DATABASE=mysql_db -v mysql_storage:/var/lib/mysql --name devdbos mysql:latest

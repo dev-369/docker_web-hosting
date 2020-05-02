@@ -1,0 +1,36 @@
+version: '3'
+
+
+services:
+  devdbos:
+    image:  mysql:latest
+    volumes:
+      - mysql_storage_new:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysqlroot
+      MYSQL_USER: quantadev
+      MYSQL_PASSWORD: quantakali
+      MYSQL_DATABASE: mydb
+
+
+  wordpressos:
+    image: wordpress:latest
+    restart: always
+    depends_on:
+      - devdbos
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: devdbos
+      WORDPRESS_DB_USER: quantadev
+      WORDPRESS_DB_PASSWORD: quantakali
+      WORDPRESS_DB_NAME: mydb
+    volumes:
+      - wp_storage_new:/var/www/html
+
+
+volumes:
+  wp_storage_new:
+  mysql_storage_new:
+
